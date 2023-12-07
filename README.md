@@ -1,5 +1,5 @@
 # DeliveryCompany
-school project.
+A school project for PPAI. 
 
 Responsibilities:
 
