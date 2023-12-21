@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+}
+
+#left_panel {
+    max-height: 100%;
+    width: 20%;
+    text-align: center;
+    /* display: flex; */
+    /* flex-direction: column; */
+}
+
+#left_panel > div:first-child {
+    height: 34%;
+}
+
+#left_panel > * {
+    font-weight: 300;
+    text-align: center;
+    width: 100%;
+}
+
+#left_panel hr {
+    width: 70%;
+    margin: auto;
+}
+
+#left_panel:first-child {
+    margin-top: 20px;
+}
+
+#left_panel h1 {
+    margin: auto;
+    width: 80%;
+    border-bottom: 1px solid black;
+    padding-bottom: 20px;
+}
+
+#left_panel form input[type='submit'] {
+    margin-top: 20px;
+    font-weight: 200;
+    font-size: 20px;
+    padding: 6px 12px;
+}
+
+/* //////////////////////////////////////////////////////////       User Navigation bar (#left_panel div.user_nav)         ////////////////////////////////////////////////////////// */
+
+.user_nav {
+    height: 65%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.user_nav div > * {
+    margin: auto;
+    padding: 10px 0;
+    width: 70%;
+    text-align: left;
+    cursor: pointer;
+    border-bottom: 1px solid black;
+}
+
+.user_nav div:last-child > *:last-child {
+    border: 1px solid black;
+}

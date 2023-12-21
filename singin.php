@@ -2,7 +2,9 @@
         if (!isset($_POST['login']) || !isset($_POST['pass'])) {
             header("Location: registraction_panel.html");
         }
-    
+        if ($_POST['login'] == "" || $_POST['pass'] == "") {
+            header("Location: registraction_panel.html");    
+        }
         if (empty($_POST['login']) || empty($_POST['pass'])) {
             die("Form cannot be empty");
         }
@@ -28,10 +30,12 @@
             //////////////// ------========== SPRAWDZENIE HASŁA ==========------- ////////////////
             if (password_verify($pass, $uPass)) {
                 echo "Login i haslo zgodne<br>";
+                $_SESSION['login'] = $uLogin;
                 session_start();
                 header("Location: dashboard.php");
             } else {
                 echo "Błędne haslo<br>";
+                session_destroy();
             }
         }   
 ?>

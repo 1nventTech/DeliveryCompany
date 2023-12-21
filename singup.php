@@ -20,7 +20,10 @@
     $kwerenda = mysqli_prepare($conn, "SELECT uLogin FROM uzytkownicy WHERE uLogin = ?");
     mysqli_stmt_bind_param($kwerenda, 's', $login);
     mysqli_stmt_execute($kwerenda);
+    $result = mysqli_stmt_affected_rows($kwerenda);
+    print_r($result);
     
+
     if (mysqli_stmt_affected_rows($kwerenda) == 1) {
         echo "Użytkownik istnieje!";
     } else if (mysqli_stmt_affected_rows($kwerenda) == -1) {
@@ -38,7 +41,6 @@
         } else {
             echo "<br>nie";
         }
-        mysqli_close($conn);
     }
     mysqli_close($conn);
 ?>
