@@ -1,6 +1,8 @@
 <?php
     session_start();
-    if(!isset($_COOKIE['message']) setcookie('message',"",time() + 60));
+    if(!isset($_COOKIE['message'])) setcookie('message',"",time() + 60);
+    
+        
     function getLogName() {
         if (isset($_SESSION['login'])) {
             return $_SESSION['login']; 
