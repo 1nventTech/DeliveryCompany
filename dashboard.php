@@ -25,6 +25,7 @@
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: #333;
+    display:flex;
 }
 
 #left_panel {
@@ -92,7 +93,51 @@ form {
     font-size: 40px;
     border-radius: 50%;
 }
-
+#right_panel{
+    align-items: center;
+    text-align:center;
+    justify-content: center;
+}
+input[type="text"]{
+    padding:10px;
+    margin:10px;
+    border-radius:10px;
+}
+input[type="submit"]{
+    background-color: #ffad33;
+    margin-top: 25px;
+    color: #333;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 80%;
+}
+label{
+    color:white;
+}
+#branchTable{
+    display:flex;
+}
+table{
+    background-color: #ffad33;
+    border-collapse: collapse;
+    width: 80%;
+    align-self: start;
+    margin: 20px auto;
+    margin-top: 20%;
+}
+tr,td{
+    padding:10px;
+}
+#oddzRejHeader{
+    color:white;
+    display:block;
+    margin:10px;
+    font-family:monospace;
+}
 </style>
 <body>
 <!-- <i class="fa-solid fa-user-shield"></i> -->        <!--    Admin ico      -->
@@ -116,6 +161,63 @@ form {
             <div>
                 <p id="settings"><i class="fa-solid fa-gear"></i>Settings</p>
             </div>
+        </div>
+    </div>
+    <div id="right_panel">
+
+        <h1 id="oddzRejHeader">Rejstracja Oddziału</h1>
+        <form action="register_branch.php" method="post">
+            <label>Nazwa Oddziału:</label>
+            <input type="text" name="nazwaOddzialu">
+            <label>Ulica:</label>
+            <input type="text" name="ulica">
+            <label>Numer Domu:</label>
+            <input type="text" name="nrDomu">
+            <label>Numer Lokalu:</label>
+            <input type="text" name="nrLokalu"><br>
+            <label>Kod Pocztowy:</label>
+            <input type="text" name="kodPocztowy">
+            <label>Miejscowość:</label>
+            <input type="text" name="miejscowosc">
+            <label>Telefon:</label>
+            <input type="text" name="tel">
+            <label>E-Mail:</label>
+            <input type="text" name="mail"><br>
+            <input type="submit" value="Zarejstruj odzział">
+        </form>
+        <div id="branchTable">
+            <?php
+                $host = "localhost";
+                $user = "root";
+                $pass = "";
+
+                $conn = new mysqli($host,$user,$pass);
+                $conn->select_db('firma_kurierska2023');
+                $sql = "SELECT * FROM oddzial_firmy";
+                $result = $conn->query($sql);
+
+                // Display data in HTML table
+                if ($result->num_rows > 0) {
+                    echo "<table border='1'>";
+                    echo "<tr><th>ID</th><th>Nazwa Oddziału</th><th>Ulica</th><th>Nr Domu</th><th>Nr Lokalu</th><th>Kod Pocztowy</th><th>Miasto</th><th>Telefon</th><th>Email</th></tr>";
+                    while($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>".$row["id_oddzialu"]."</td>";
+                        echo "<td>".$row["nazwa_oddzialu"]."</td>";
+                        echo "<td>".$row["ulica_oddzialu"]."</td>";
+                        echo "<td>".$row["nr_domu_oddzialu"]."</td>";
+                        echo "<td>".$row["nr_lokalu_oddzialu"]."</td>";
+                        echo "<td>".$row["kod_oddzialu"]."</td>";
+                        echo "<td>".$row["miasto_oddzialu"]."</td>";
+                        echo "<td>".$row["tel_oddzialu"]."</td>";
+                        echo "<td>".$row["email_oddzialu"]."</td>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                } else {
+                echo "0 results";
+            }
+            ?>
         </div>
     </div>
 </body>

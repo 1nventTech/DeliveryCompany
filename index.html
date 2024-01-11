@@ -1,42 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/navigation.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/navigation.css" />
     <title>Document</title>
-</head>
-<style>
+  </head>
+  <style>
     body {
-        margin: 0;
-        overflow: hidden;
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      vertical-align: middle;
     }
 
     .div1 {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 70%;
-        height: 100%;
-        background-color: #3498db;
-        clip-path: polygon(0 0, 100% 0, 70% 100%, 0% 100%);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 70%;
+      height: 100%;
+      background-color: #3c3b34;
+      clip-path: polygon(0 0, 100% 0, 70% 100%, 0% 100%);
+      z-index: -10;
     }
 
     .div2 {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #2ecc71;
-        clip-path: polygon(60% 0, 100% 0, 100% 100%, 40% 100%);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffad33;
+      clip-path: polygon(60% 0, 100% 0, 100% 100%, 40% 100%);
+      z-index: -9;
     }
-
-</style>
-<body>
+    .btn {
+      padding: 20px;
+      width: 150px;
+      height: 30px;
+      border-radius: 20px;
+      background-color: rgb(49, 44, 100);
+      text-align: center;
+      border: solid #ffad33 2px;
+      color: white;
+      font-family: monospace;
+      font-size: 20px;
+      margin: 10px;
+      transform: translateY(500%);
+    }
+    .btn:focus {
+      cursor: pointer;
+    }
+    a {
+      color: white;
+    }
+  </style>
+  <body>
     <div class="div1"></div>
     <div class="div2"></div>
-    <!-- <a href="singin_panel.html">Sing in</a> -->
-    <!-- <a href="singup_panel.html">Sing up</a> -->
-</body>
+    <div class="btn">
+      <a href="singin_panel.html">Sing in</a>
+    </div>
+    <div style="border-color: #ffffff" class="btn">
+      <a href="singup_panel.html">Sing up</a>
+    </div>
+  </body>
 </html>
