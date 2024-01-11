@@ -63,17 +63,20 @@
     
             // Sprawdzenie hasła
             if (password_verify($pass, $uPass)) {
+                $_COOKIE['message'] = "";
                 echo "Login i hasło zgodne<br>";
                 $_SESSION['login'] = $uLogin;
                 header("Location: dashboard.php");
             } else {
-                echo "Błędne hasło<br>";
+                $_COOKIE['message'] = "Błędne hasło";
                 session_destroy();
+                include("signin_panel.php");
             }
         } else {
             // Użytkownik nie istnieje
-            echo "Użytkownik o podanym loginie nie istnieje<br>";
+            $_COOKIE['message'] = "Użytkownik o podanym loginie nie istnieje<br>";
             session_destroy();
+            include("signin_panel.php");
         }
     }
      

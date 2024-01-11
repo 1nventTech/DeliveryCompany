@@ -1,6 +1,6 @@
 <?php
 if (!isset($_POST['login']) || !isset($_POST['pass'])) {
-    header("Location: singup.html");
+    header("Location: signup.html");
 }
 
 if (empty($_POST['login']) || empty($_POST['pass'])) {
@@ -23,7 +23,8 @@ mysqli_stmt_execute($kwerenda);
 mysqli_stmt_store_result($kwerenda);
 
 if (mysqli_stmt_num_rows($kwerenda) == 1) {
-    echo "Użytkownik istnieje!";
+    $_COOKIE['message'] = "Użytkownik istnieje!";
+    include("signup_panel.php");
 } else {
     ///////////////////////////////////////// ----------==================   REJESTRACJA UŻYTKOWNIKA   ===================--------------------- ////////////////////////////////////////////////
 
@@ -32,9 +33,11 @@ if (mysqli_stmt_num_rows($kwerenda) == 1) {
     mysqli_stmt_execute($kwerenda2);
 
     if (mysqli_stmt_affected_rows($kwerenda2) == 1) {
-        echo "<br>Pomyślnie zarejestrowano użytkownika";
+        $_COOKIE['message'] = "Pomyślnie zarejestrowano użytkownika";
+        include("signup_panel.php");
     } else {
-        echo "<br>nie";
+        $_COOKIE['message'] = "Skill issue";
+        include("signup_panel.php");
     }
 }
 

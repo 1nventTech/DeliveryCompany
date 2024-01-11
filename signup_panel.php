@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/panels.css">
-    <title>Login Panel</title>
+    <title>Rejestracja</title>
 </head>
 <body>
     <div class="form">
-        <h2>Login</h2>
-        <form action="singin.php" method="POST">
-            <label for="login">Username:</label>
+        <h2>Rejestracja</h2>
+        <form action="signup.php" method="post">
+            <label for="login">Login:</label>
             <input type="text" id="login" name="login" required><br>
 
             <label for="pass">Password:</label>
             <input type="password" id="pass" name="pass" required>
+            <p><?php if(isset($_COOKIE["message"])) echo "<p style='color:red'>".$_COOKIE['message']."</p>" ?></p>
 
-            <button type="submit">Login</button>
+            <br><br>
+            <button type="submit">Rejestruj</button>
         </form>
     </div>
 </body>
