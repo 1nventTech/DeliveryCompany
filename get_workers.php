@@ -5,7 +5,7 @@
 
         $conn = new mysqli($host,$user,$pass);
         $conn->select_db('firma_kurierska2023');
-        $sql = "SELECT * FROM kurier";
+        $sql = "SELECT *, oddzial_firmy.nazwa_oddzialu FROM kurier inner join oddzial_firmy on kurier.id_oddzialu = oddzial_firmy.id_oddzialu";
         $result = $conn->query($sql);
 
         // Display data in HTML table
@@ -20,7 +20,7 @@
                 echo "<td>".$row["telefon_kr"]."</td>";
                 echo "<td>".$row["godziny_od"]."</td>";
                 echo "<td>".$row["godziny_do"]."</td>";
-                echo "<td>".$row["id_oddzialu"]."</td>";
+                echo "<td>".$row["nazwa_oddzialu"]."</td>";
                 echo "</tr>";
         }
                 echo "</table>";
