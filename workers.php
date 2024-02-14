@@ -35,7 +35,7 @@
         display:flex;
     }
 
-    #oddzialdiv {
+    #workerdiv {
         align-items: center;
         text-align:center;
         justify-content: center;
@@ -74,7 +74,7 @@
     tr,td {
         padding:10px;
     }
-    #oddzRejHeader {
+    #workerRejHeader {
         color:white;
         display:block;
         margin:10px;
@@ -104,30 +104,26 @@
                <a href="settings.php"><div class="form-category"><i class="fa-solid fa-filter"></i> Opcje</div></a>
             </div>
     </div>
-    <div id="oddzialdiv">
-        <h1 id="oddzRejHeader">Rejstracja Oddziału</h1>
-        <form action="register_branch.php" method="post">
-            <label>Nazwa Oddziału:</label>
-            <input type="text" name="nazwaOddzialu">
-            <label>Ulica:</label>
-            <input type="text" name="ulica">
-            <label>Numer Domu:</label>
-            <input type="text" name="nrDomu">
-            <label>Numer Lokalu:</label>
-            <input type="text" name="nrLokalu"><br>
-            <label>Kod Pocztowy:</label>
-            <input type="text" name="kodPocztowy">
-            <label>Miejscowość:</label>
-            <input type="text" name="miejscowosc">
+    <div id="workerdiv">
+        <h1 id="workerRejHeader">Rejstracja Kuriera</h1>
+        <form action="register_worker.php" method="post">
+            <label>Imie:</label>
+            <input type="text" name="name">
+            <label>Nazwisko:</label>
+            <input type="text" name="surname">
             <label>Telefon:</label>
-            <input type="text" name="tel">
-            <label>E-Mail:</label>
-            <input type="text" name="mail"><br>
-            <input type="submit" value="Zarejstruj odzział">
+            <input type="text" name="phone">
+            <label>Godziny od:</label>
+            <input type="text" name="starts-at"><br>
+            <label>Godziny do:</label>
+            <input type="text" name="ends-at">
+            <label>Oddział :</label>
+            <input type="text" name="oddzial">
+            <input type="submit" value="Zarejstruj kuriera">
         </form>
-        <div id="branchTable">
+        <div id="workertable">
             <?php
-                include("get_branches.php");
+                include("get_workers.php");
             ?>
         </div>
     </div>

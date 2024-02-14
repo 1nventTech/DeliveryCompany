@@ -96,49 +96,19 @@
                 </form>
             </div>
         </div>
-            <div style="margin-bottom:40%">
+            <div>
                 <a href="dashboard.php"><div class="form-category"><i class="fa-solid fa-warehouse"></i> Dane Oddziału</div></a>
                 <a href="workers.php"><div class="form-category"><i class="fa-solid fa-users"></i> Pracownicy Serwisu</div></a>
                 <a href="clients.php"><div class="form-category"><i class="fa-solid fa-users-line"></i> Klienci servisu</div></a>
                <a href="files.php"><div class="form-category"><i class="fa-solid fa-folder-open"></i> Kartoteka</div></a>
                <a href="settings.php"><div class="form-category"><i class="fa-solid fa-filter"></i> Opcje</div></a>
             </div>
+            <div>
+                <p id="settings"><i class="fa-solid fa-gear"></i>Settings</p>
+            </div>
     </div>
     <div id="oddzialdiv">
-        <h1 id="oddzRejHeader">Rejstracja Oddziału</h1>
-        <form action="register_branch.php" method="post">
-            <label>Nazwa Oddziału:</label>
-            <input type="text" name="nazwaOddzialu">
-            <label>Ulica:</label>
-            <input type="text" name="ulica">
-            <label>Numer Domu:</label>
-            <input type="text" name="nrDomu">
-            <label>Numer Lokalu:</label>
-            <input type="text" name="nrLokalu"><br>
-            <label>Kod Pocztowy:</label>
-            <input type="text" name="kodPocztowy">
-            <label>Miejscowość:</label>
-            <input type="text" name="miejscowosc">
-            <label>Telefon:</label>
-            <input type="text" name="tel">
-            <label>E-Mail:</label>
-            <input type="text" name="mail"><br>
-            <input type="submit" value="Zarejstruj odzział">
-        </form>
-        <div id="branchTable">
-            <?php
-                include("get_branches.php");
-            ?>
-        </div>
-    </div>
-    <div class="settings" style="display: none;">
-        <div class="bg">
-            <div class="info">
-                <!-- Treść -->
-                <button class="close-btn">Zamknij</button>
-            </div>
-        </div>
-    </div>
+        <h1 id="oddzRejHeader">Files are work in progress</h1>
     <script src="./dashboard.js"></script>
 </body>
 </html>

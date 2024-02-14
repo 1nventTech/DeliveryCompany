@@ -105,41 +105,7 @@
             </div>
     </div>
     <div id="oddzialdiv">
-        <h1 id="oddzRejHeader">Rejstracja Oddziału</h1>
-        <form action="register_branch.php" method="post">
-            <label>Nazwa Oddziału:</label>
-            <input type="text" name="nazwaOddzialu">
-            <label>Ulica:</label>
-            <input type="text" name="ulica">
-            <label>Numer Domu:</label>
-            <input type="text" name="nrDomu">
-            <label>Numer Lokalu:</label>
-            <input type="text" name="nrLokalu"><br>
-            <label>Kod Pocztowy:</label>
-            <input type="text" name="kodPocztowy">
-            <label>Miejscowość:</label>
-            <input type="text" name="miejscowosc">
-            <label>Telefon:</label>
-            <input type="text" name="tel">
-            <label>E-Mail:</label>
-            <input type="text" name="mail"><br>
-            <input type="submit" value="Zarejstruj odzział">
-        </form>
-        <div id="branchTable">
-            <?php
-                include("get_branches.php");
-            ?>
-        </div>
-    </div>
-    <div class="settings" style="display: none;">
-        <div class="bg">
-            <div class="info">
-                <!-- Treść -->
-                <button class="close-btn">Zamknij</button>
-            </div>
-        </div>
-    </div>
-    <script src="./dashboard.js"></script>
+        <h1 id="oddzRejHeader">Brak Klientów</h1>
 </body>
 </html>
 <!-- <i class="fa-solid fa-skull"></i> -->              <!-- skul iz cul  -->
