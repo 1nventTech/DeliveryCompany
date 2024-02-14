@@ -2,7 +2,12 @@
     session_start();
     if(!isset($_COOKIE['message'])) setcookie('message',"",time() + 60);
     
-        
+    if (isset($_SESSION['login']) && isset($_POST['logout'])) {
+        session_destroy();
+        header("Location: index.html");
+        exit("Wylogowywanie...");
+    }
+
     function getLogName() {
         if (isset($_SESSION['login'])) {
             return $_SESSION['login']; 
@@ -18,141 +23,79 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="style/dashboard.css"> -->
+    <link rel="stylesheet" href="style/dashboard.css">
     <title>Dashboard - <?php echo getLogName(); ?></title>
 </head>
 <style>
     body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #333;
-    display:flex;
-}
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #333;
+        display:flex;
+    }
 
-#left_panel {
-    width: 30%;
-    height: 100vh;
-    background-color: #000;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#left_panel img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-h1 {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-}
-
-h1 i {
-    margin-right: 10px;
-}
-
-form {
-    margin-top: 10px;
-}
-
-.user_nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-.user_nav div {
-    width: 100%;
-}
-
-.user_nav p {
-    padding: 10px;
-    margin: 0;
-    cursor: pointer;
-    border-bottom: 1px solid #444;
-}
-
-.user_nav p:last-child {
-    border: none;
-}
-
-#settings {
-    margin-top: 20px;
-}
-
-.fa-user {
-    border: 1px solid white;
-    padding: 30px;
-    font-size: 40px;
-    border-radius: 50%;
-}
-#right_panel{
-    align-items: center;
-    text-align:center;
-    justify-content: center;
-}
-input[type="text"]{
-    padding:10px;
-    margin:10px;
-    border-radius:10px;
-}
-input[type="submit"]{
-    background-color: #ffad33;
-    margin-top: 25px;
-    color: #333;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    width: 80%;
-}
-label{
-    color:white;
-}
-#branchTable{
-    display:flex;
-}
-table{
-    background-color: #ffad33;
-    border-collapse: collapse;
-    width: 80%;
-    align-self: start;
-    margin: 20px auto;
-    margin-top: 20%;
-}
-tr,td{
-    padding:10px;
-}
-#oddzRejHeader{
-    color:white;
-    display:block;
-    margin:10px;
-    font-family:monospace;
-}
+    #right_panel {
+        align-items: center;
+        text-align:center;
+        justify-content: center;
+    }
+    input[type="text"] {
+        padding:10px;
+        margin:10px;
+        border-radius:10px;
+    }
+    input[type="submit"] {
+        background-color: #ffad33;
+        margin-top: 25px;
+        color: #333;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+        width: 80%;
+    }
+    label {
+        color:white;
+    }
+    #branchTable {
+        display:flex;
+    }
+    table {
+        background-color: #ffad33;
+        border-collapse: collapse;
+        width: 80%;
+        align-self: start;
+        margin: 20px auto;
+        margin-top: 20%;
+    }
+    tr,td {
+        padding:10px;
+    }
+    #oddzRejHeader {
+        color:white;
+        display:block;
+        margin:10px;
+        font-family:monospace;
+    }
 </style>
 <body>
 <!-- <i class="fa-solid fa-user-shield"></i> -->        <!--    Admin ico      -->
     <div id="left_panel">
         <div>
-            <i class="fa-solid fa-user"></i>
-            <h1><?PHP echo getLogName(); ?></h1 >
-            <!-- <hr> -->
-            <form action="" method="post">
-                <input name="logout" type="submit" value="Wyloguj">
-            </form>
+            <div>
+                <i class="fa-solid fa-user"></i>
+                <h1><?PHP echo getLogName(); ?></h1 >
+                <hr>
+            </div>
+            <div class="user_nav">
+                <form action="" method="post">
+                    <input name="logout" type="submit" value="Wyloguj">
+                </form>
+            </div>
         </div>
-        <div class="user_nav">
             <div>
                 <p><i class="fa-solid fa-warehouse"></i> Dane Oddziału</p>
                 <p><i class="fa-solid fa-users"></i> Pracownicy Serwisu</p>
@@ -163,10 +106,8 @@ tr,td{
             <div>
                 <p id="settings"><i class="fa-solid fa-gear"></i>Settings</p>
             </div>
-        </div>
     </div>
     <div id="right_panel">
-
         <h1 id="oddzRejHeader">Rejstracja Oddziału</h1>
         <form action="register_branch.php" method="post">
             <label>Nazwa Oddziału:</label>
@@ -222,6 +163,15 @@ tr,td{
             ?>
         </div>
     </div>
+    <div class="settings">
+        <div class="bg">
+            <div class="info">
+                <!-- Treść -->
+                <button class="close-btn">Zamknij</button>
+            </div>
+        </div>
+    </div>
+    <script src="./dashboard.js"></script>
 </body>
 </html>
 <!-- <i class="fa-solid fa-skull"></i> -->              <!-- skul iz cul  -->

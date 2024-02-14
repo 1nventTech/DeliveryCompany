@@ -15,9 +15,18 @@
 
             <label for="pass">Password:</label>
             <input type="password" id="pass" name="pass" required>
-            <p><?php if(isset($_COOKIE["message"])) echo "<p style='color:red'>".$_COOKIE['message']."</p>" ?></p>
+            <p>
+                <?php
+                if (isset($_COOKIE['message'])) {
+                    if ($_COOKIE["message"] == "Pomyślnie zarejestrowano użytkownika" || $_COOKIE["message"] == "Użytkownik istnieje!") {
+                        echo "<p style='color:green'>".$_COOKIE['message']."</p>";
+                    } else {
+                        echo "<p style='color:red'>".$_COOKIE['message']."</p>";
+                    }
+                }
+                ?>
+            </p>
 
-            <br><br>
             <button type="submit">Rejestruj</button>
         </form>
     </div>
