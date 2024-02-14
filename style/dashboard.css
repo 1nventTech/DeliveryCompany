@@ -160,6 +160,7 @@ h1 {
 td,
 th {
   padding: 10px;
+  border-color: black;
 }
 table {
   border-radius: 30px;
